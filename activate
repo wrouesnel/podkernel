@@ -1,0 +1,15 @@
+#!/bin/bash
+# Activate the project virtualenv
+# This file is sourced by other scripts, and must be executed relevant to the repository root.
+
+source include.sh
+
+if [ ! -d "${venv_dir}" ]; then
+    fatal 1 "${venv_dir} does not exist. Please run ./autogen.sh"
+fi
+
+if [ ! -e "${venv_dir}/bin/activate" ]; then
+    fatal 1 "Missing ${venv_dir}/bin/activate. Please delete ${venv_dir} and re-run ./autogen.sh"
+fi
+
+source "${venv_dir}/bin/activate"
